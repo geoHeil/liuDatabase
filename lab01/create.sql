@@ -1,53 +1,44 @@
-create sequence seq_expert;
-create sequence seq_recommendation;
-create sequence seq_expertise_area;
-create sequence seq_topic;
+CREATE SEQUENCE seq_expert;
+CREATE SEQUENCE seq_recommendation;
+CREATE SEQUENCE seq_expertise_area;
+CREATE SEQUENCE seq_topic;
 
 CREATE TABLE expert (
- expert_id INT PRIMARY KEY DEFAULT nextval('seq_expert'),
- email VARCHAR(200),
- name VARCHAR(200),
- address VARCHAR(500),
- description VARCHAR(1000)
+  expert_id   INT PRIMARY KEY DEFAULT nextval('seq_expert'),
+  email       VARCHAR(200),
+  name        VARCHAR(200),
+  address     VARCHAR(500),
+  description VARCHAR(1000)
 );
 
 CREATE TABLE expertise_area (
- expertise_area_id INT PRIMARY KEY DEFAULT nextval('seq_expertise_area'),
- name VARCHAR(200)
+  expertise_area_id INT PRIMARY KEY DEFAULT nextval('seq_expertise_area'),
+  name              VARCHAR(200)
 );
 
 CREATE TABLE recommendation (
- recommendation_id INT NOT NULL,
- text VARCHAR(10)
+  recommendation_id INT PRIMARY KEY DEFAULT nextval('seq_recommendation'),
+  text              VARCHAR(1000)
 );
-
-ALTER TABLE recommendation ADD CONSTRAINT PK_recommendation PRIMARY KEY (recommendation_id);
-
 
 CREATE TABLE topic (
- topic_id INT NOT NULL,
- expertise_area_id INT NOT NULL,
- originator INT NOT NULL,
- heading VARCHAR(10),
- text VARCHAR(10)
+  topic_id          INT PRIMARY KEY DEFAULT nextval('seq_topic'),
+  expertise_area_id INT NOT NULL,
+  originator        INT NOT NULL,
+  heading           VARCHAR(100),
+  text              VARCHAR(1000)
 );
-
-ALTER TABLE topic ADD CONSTRAINT PK_topic PRIMARY KEY (topic_id,expertise_area_id,originator);
-
 
 CREATE TABLE subtopic (
- super_topic_id INT NOT NULL,
- expertise_area_id INT NOT NULL,
- originator INT NOT NULL
+  super_topic_id    INT NOT NULL,
+  expertise_area_id INT NOT NULL,
+  originator        INT NOT NULL
 );
 
-ALTER TABLE subtopic ADD CONSTRAINT PK_subtopic PRIMARY KEY (super_topic_id,expertise_area_id,originator);
+ALTER TABLE subtopic ADD CONSTRAINT PK_subtopic PRIMARY KEY (super_topic_id, expertise_area_id, originator);
 
-
-ALTER TABLE topic ADD CONSTRAINT FK_topic_0 FOREIGN KEY (expertise_area_id) REFERENCES expertise_area (expertise_area_id);
-ALTER TABLE topic ADD CONSTRAINT FK_topic_1 FOREIGN KEY (originator) REFERENCES expert (expert_id);
-
-
-ALTER TABLE subtopic ADD CONSTRAINT FK_subtopic_0 FOREIGN KEY (super_topic_id,expertise_area_id,originator) REFERENCES topic (topic_id,expertise_area_id,originator);
+ALTER TABLE topic ADD CONSTRAINT FK_exarea FOREIGN KEY (expertise_area_id) REFERENCES expertise_area (expertise_area_id);
+ALTER TABLE topic ADD CONSTRAINT FK_originator FOREIGN KEY (originator) REFERENCES expert (expert_id);
+ALTER TABLE subtopic ADD CONSTRAINT FK_subtopic FOREIGN KEY (super_topic_id, expertise_area_id, originator) REFERENCES topic (topic_id, expertise_area_id, originator);
 
 
