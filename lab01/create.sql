@@ -39,6 +39,5 @@ ALTER TABLE subtopic ADD CONSTRAINT PK_subtopic PRIMARY KEY (super_topic_id, exp
 
 ALTER TABLE topic ADD CONSTRAINT FK_exarea FOREIGN KEY (expertise_area_id) REFERENCES expertise_area (expertise_area_id);
 ALTER TABLE topic ADD CONSTRAINT FK_originator FOREIGN KEY (originator) REFERENCES expert (expert_id);
+
 ALTER TABLE subtopic ADD CONSTRAINT FK_subtopic FOREIGN KEY (super_topic_id, expertise_area_id, originator) REFERENCES topic (topic_id, expertise_area_id, originator);
-
-
