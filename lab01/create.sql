@@ -18,7 +18,9 @@ CREATE TABLE expertise_area (
 
 CREATE TABLE recommendation (
   recommendation_id INT PRIMARY KEY DEFAULT nextval('seq_recommendation'),
-  text              VARCHAR(1000)
+  text              VARCHAR(1000),
+  FOREIGN KEY (expertise_area_id) REFERENCES expertise_area (expertise_area_id),
+  FOREIGN KEY (originator) REFERENCES expert (expert_id)
 );
 
 CREATE TABLE topic (
@@ -30,14 +32,12 @@ CREATE TABLE topic (
 );
 
 CREATE TABLE subtopic (
-  super_topic_id    INT NOT NULL,
-  expertise_area_id INT NOT NULL,
-  originator        INT NOT NULL
+  FOREIGN KEY (super_topic_id,
+               expertise_area_id,
+               originator)
+  REFERENCES topic (topic_id,
+                    expertise_area_id,
+                    originator)
 );
 
 ALTER TABLE subtopic ADD CONSTRAINT PK_subtopic PRIMARY KEY (super_topic_id, expertise_area_id, originator);
-
-ALTER TABLE topic ADD CONSTRAINT FK_exarea FOREIGN KEY (expertise_area_id) REFERENCES expertise_area (expertise_area_id);
-ALTER TABLE topic ADD CONSTRAINT FK_originator FOREIGN KEY (originator) REFERENCES expert (expert_id);
-
-ALTER TABLE subtopic ADD CONSTRAINT FK_subtopic FOREIGN KEY (super_topic_id, expertise_area_id, originator) REFERENCES topic (topic_id, expertise_area_id, originator);
