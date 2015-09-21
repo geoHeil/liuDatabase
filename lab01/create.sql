@@ -1,6 +1,5 @@
 CREATE SEQUENCE seq_expert;
 CREATE SEQUENCE seq_recommendation;
-CREATE SEQUENCE seq_expertise_area;
 CREATE SEQUENCE seq_topic;
 
 CREATE TABLE expert (
@@ -11,37 +10,28 @@ CREATE TABLE expert (
   description VARCHAR(1000)
 );
 
-CREATE TABLE expertise_area (
-  expertise_area_id INTEGER PRIMARY KEY DEFAULT nextval('seq_expertise_area'),
-  name              VARCHAR(200)
-);
-
-CREATE TABLE expert_expertise_area (
-  expert_id         INTEGER REFERENCES expert (expert_id),
-  expertise_area_id INTEGER REFERENCES expertise_area (expertise_area_id)
-);
-
 CREATE TABLE topic (
-  topic_id          INTEGER PRIMARY KEY DEFAULT nextval('seq_topic'),
-  expertise_area_id INTEGER REFERENCES expertise_area (expertise_area_id),
-  originator        INTEGER REFERENCES expert (expert_id),
-  heading           VARCHAR(100),
-  text              VARCHAR(1000)
+  topic_id       INTEGER PRIMARY KEY DEFAULT nextval('seq_topic'),
+  expertise_area VARCHAR(500),
+  originator     INTEGER REFERENCES expert (expert_id),
+  heading        VARCHAR(100),
+  text           VARCHAR(1000)
+);
+
+
+CREATE TABLE expert_topic (
+  expert_id INTEGER REFERENCES expert (expert_id),
+  topic_id  INTEGER REFERENCES topic (topic_id)
 );
 
 CREATE TABLE subtopic (
-  FOREIGN KEY (super_topic_id,
-               expertise_area_id,
-               originator)
-  REFERENCES topic (topic_id,
-                    expertise_area_id,
-                    originator)
+  superTopic INTEGER REFERENCES topic (topic_id),
+  subTopic   INTEGER REFERENCES topic (topic_id)
 );
-
-ALTER TABLE subtopic ADD CONSTRAINT PK_subtopic PRIMARY KEY (super_topic_id, expertise_area_id, originator);
 
 CREATE TABLE recommendation (
   recommendation_id INTEGER PRIMARY KEY DEFAULT nextval('seq_recommendation'),
   text              VARCHAR(1000),
-  --   TODO references for m-n
+  recomendededBy    INTEGER REFERENCES expert (expert_id),
+  isRrecomendeded INTEGER REFERENCES expert(expert_id)
 );
