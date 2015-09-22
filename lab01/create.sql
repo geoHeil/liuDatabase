@@ -45,6 +45,9 @@ INSERT INTO expert (email, name, address, description)
 VALUES ('e2@expert.com', 'e2name', 'e2address', '<em>some xml description</em>');
 INSERT INTO expert (email, name, address, description)
 VALUES ('e3@expert.com', 'e3name', 'e3address', '<em>some xml description</em>');
+INSERT INTO expert (email, name, address, description)
+VALUES ('e4@expert.com', 'e4name', 'e4address', '<em>some xml description</em>');
+
 
 INSERT INTO topic (expertise_area, originator, heading, text) VALUES ('area1', 1, 'heading1', 'text1');
 INSERT INTO topic (expertise_area, originator, heading, text) VALUES ('area2', 2, 'heading2', 'text2');
@@ -67,3 +70,4 @@ INSERT INTO subtopic (superTopic, subTopic) VALUES (4, 5);
 INSERT INTO recommendation (text, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 1, 3);
 INSERT INTO recommendation (text, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 1, 2);
 INSERT INTO recommendation (text, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 2, 3);
+INSERT INTO recommendation (text, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 3, 4);

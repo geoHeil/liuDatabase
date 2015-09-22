@@ -62,3 +62,18 @@ FROM expertRecommendedByX eX
 WHERE t.expertise_area = 'area1';
 
 -- Query E
+
+-- TODO make recursive query work
+WITH expertsLinks (expert_id) AS (
+  SELECT
+    1,
+    1
+  UNION ALL
+  SELECT DISTINCT e.expert_id
+  FROM expert e
+    JOIN recommendation r ON e.expert_id = r.isrrecomendeded
+  --       choose expert X here
+  WHERE r.recomendededby = 1
+)
+SELECT expert_id
+FROM expertsLinks;
