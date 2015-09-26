@@ -1,37 +1,27 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
     <xsd:element name="knowledgeDatabase" type="knowledgeDatabase">
-        <xsd:key name="userKeys">
-            <xsd:selector xpath="users/user"/>
-            <xsd:field xpath="@name"/>
+        <xsd:key name="originator">
+            <xsd:selector xpath="experts/expert"/>
+            <xsd:field xpath="@expert_id"/>
         </xsd:key>
 
-        <xsd:keyref name="gamerRefs" refer="userKeys">
-            <xsd:selector xpath="games/game/gamer"/>
-            <xsd:field xpath="@ref"/>
-        </xsd:keyref>
+        <xsd:key name="recommender">
+            <xsd:selector xpath="experts/expert"/>
+            <xsd:field xpath="@expert_id"/>
+        </xsd:key>
+
+        <xsd:key name="expert_in_topic">
+            <xsd:selector xpath="topics/topic"/>
+            <xsd:field xpath="@topic_id"/>
+        </xsd:key>
     </xsd:element>
 
     <xsd:complexType name="knowledgeDatabase">
         <xsd:sequence>
             <xsd:element name="experts" type="experts" minOccurs="0" maxOccurs="1"/>
-            <xsd:element name="expertise_areas" type="expertise_areas" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="topics" type="topics" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
-    </xsd:complexType>
-
-    <xsd:complexType name="category">
-        <xsd:attribute name="name" type="xsd:ID" use="required"/>
-    </xsd:complexType>
-
-    <xsd:complexType name="gamer">
-        <xsd:attribute name="ref" type="xsd:IDREF"/>
-    </xsd:complexType>
-
-    <xsd:complexType name="player">
-        <xsd:sequence>
-            <xsd:element name="answer" type="answer" minOccurs="0" maxOccurs="unbounded"/>
-        </xsd:sequence>
-        <xsd:attribute name="ref" type="xsd:IDREF" use="required"/>
     </xsd:complexType>
 
     <xsd:complexType name="experts">
@@ -40,9 +30,27 @@
         </xsd:sequence>
     </xsd:complexType>
 
-    <xsd:complexType name="expertise_areas">
+    <xsd:complexType name="topics">
         <xsd:sequence>
-            <xsd:element name="expert" type="expertise_area" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="topic" type="topic" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="recommendations">
+        <xsd:sequence>
+            <xsd:element name="recommendation" type="recommendation" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="subtopics">
+        <xsd:sequence>
+            <xsd:element name="subtopic" type="topic" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="expert_in_topics">
+        <xsd:sequence>
+            <xsd:element name="expert_in_topic" type="xsd:IDREF" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
     </xsd:complexType>
 
@@ -52,34 +60,29 @@
             <xsd:element name="name" type="xsd:string"/>
             <xsd:element name="address" type="xsd:string"/>
             <xsd:element name="description" type="xsd:string"/>
-            <xsd:element name="recommendation" type="recommendation" maxOccurs="unbounded"/>
+            <xsd:element name="recommendations" type="recommendations" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="expert_in_topics" type="expert_in_topics" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
         <xsd:attribute name="expert_id" type="xsd:ID" use="required"/>
     </xsd:complexType>
 
     <xsd:complexType name="recommendation">
         <xsd:sequence>
-            <xsd:element name="recommender" type="expert" maxOccurs="unbounded"/>
+            <xsd:element name="recommender" type="xsd:IDREF" maxOccurs="unbounded"/>
             <xsd:element name="expertRecommended" type="expert" maxOccurs="1"/>
             <xsd:element name="text" type="xsd:string"/>
         </xsd:sequence>
         <xsd:attribute name="recommendation_id" type="xsd:ID" use="required"/>
     </xsd:complexType>
 
-    <xsd:complexType name="expertise_area">
-        <xsd:sequence>
-            <xsd:element name="name" type="xsd:string"/>
-            <xsd:element name="topic" type="topic" maxOccurs="unbounded"/>
-        </xsd:sequence>
-        <xsd:attribute name="expertise_area_id" type="xsd:ID" use="required"/>
-    </xsd:complexType>
-
     <xsd:complexType name="topic">
         <xsd:sequence>
-            <xsd:element name="originator" type="expert" maxOccurs="1"/>
+            <xsd:element name="originator" type="xsd:IDREF" minOccurs="1" maxOccurs="1"/>
             <xsd:element name="heading" type="xsd:string"/>
+            <xsd:element name="expertise_area" type="xsd:string"/>
             <xsd:element name="text" type="xsd:string"/>
-            <xsd:element name="subTopic" type="topic" maxOccurs="unbounded"/>
+            <xsd:element name="subtopics" type="subtopics" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
+        <xsd:attribute name="topic_id" type="xsd:ID" use="required"/>
     </xsd:complexType>
 </xsd:schema>

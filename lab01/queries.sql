@@ -63,17 +63,35 @@ WHERE t.expertise_area = 'area1';
 
 -- Query E
 
--- TODO make recursive query work
-WITH expertsLinks (expert_id) AS (
-  SELECT
-    1,
-    1
-  UNION ALL
-  SELECT DISTINCT e.expert_id
-  FROM expert e
-    JOIN recommendation r ON e.expert_id = r.isrrecomendeded
-  --       choose expert X here
+-- TODO integrate area
+-- TODO check is recursive NEEDED
+-- SELECT e.expert_id
+-- FROM recommendation r
+--   JOIN expert e ON e.expert_id = r.isrrecomendeded
+-- WHERE r.recomendededby = 2;
+
+-- WITH expertAreaY AS (
+--     SELECT
+--       e.expert_id,
+--       e.name
+--     FROM expert e
+--       JOIN expert_topic et ON e.expert_id = et.expert_id
+--       JOIN topic t ON e.expert_id = t.originator
+--     --       specify area Y here
+--     WHERE t.expertise_area = 'area2'
+-- )
+
+WITH RECURSIVE expertsLinks (expert_id) AS (
+  SELECT e.expert_id
+  FROM recommendation r
+    JOIN expert e ON e.expert_id = r.isrrecomendeded
+  -- choose expert X here
   WHERE r.recomendededby = 1
+
+  UNION ALL
+    SELECT e.expert_id
+    FROM recommendation r
+      JOIN expert e ON e.expert_id = r.isrrecomendeded
 )
 SELECT expert_id
 FROM expertsLinks;

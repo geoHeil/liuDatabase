@@ -47,7 +47,12 @@ INSERT INTO expert (email, name, address, description)
 VALUES ('e3@expert.com', 'e3name', 'e3address', '<em>some xml description</em>');
 INSERT INTO expert (email, name, address, description)
 VALUES ('e4@expert.com', 'e4name', 'e4address', '<em>some xml description</em>');
-
+INSERT INTO expert (email, name, address, description)
+VALUES ('e5@expert.com', 'e5name', 'e5address', '<em>some xml description</em>');
+INSERT INTO expert (email, name, address, description)
+VALUES ('e6@expert.com', 'e6name', 'e6address', '<em>some xml description</em>');
+INSERT INTO expert (email, name, address, description)
+VALUES ('e7@expert.com', 'e7name', 'e7address', '<em>some xml description</em>');
 
 INSERT INTO topic (expertise_area, originator, heading, text) VALUES ('area1', 1, 'heading1', 'text1');
 INSERT INTO topic (expertise_area, originator, heading, text) VALUES ('area2', 2, 'heading2', 'text2');
@@ -71,3 +76,6 @@ INSERT INTO recommendation (text, recomendededBy, isRrecomendeded) VALUES ('reco
 INSERT INTO recommendation (text, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 1, 2);
 INSERT INTO recommendation (text, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 2, 3);
 INSERT INTO recommendation (text, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 3, 4);
+INSERT INTO recommendation (text, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 2, 5);
+INSERT INTO recommendation (text, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 3, 6);
+INSERT INTO recommendation (text, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 5, 7);
