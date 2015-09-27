@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <knowledgeDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="file:/Users/geoHeil/Dropbox/7.Semester/advancedDataModel/lab/lab01/schema.xsd">
+    xsi:noNamespaceSchemaLocation="schema.xsd">
     <experts>
-        <expert expert_id="e1" expert_in_topics="t1 t2">
+        <expert expert_id="e1">
             <email>e1@expert.com</email>
             <name>e1</name>
             <address>e1address</address>
             <description>
                 <em>some xml description</em>
             </description>
+            <expert_in_topics>
+                <expert_in_topic>t1</expert_in_topic>
+                <expert_in_topic>t2</expert_in_topic>
+            </expert_in_topics>
         </expert>
 
         <expert expert_id="e2">

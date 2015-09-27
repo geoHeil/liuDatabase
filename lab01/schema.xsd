@@ -1,5 +1,4 @@
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.1">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
     <xsd:element name="knowledgeDatabase" type="knowledgeDatabase">
         <xsd:keyref name="originator" refer="expertKey">
@@ -11,8 +10,8 @@
             <xsd:field xpath="recommender"/>
         </xsd:keyref>
         <xsd:keyref name="expert_in_topicKey" refer="topicKey">
-            <xsd:selector xpath="experts/experts"/>
-            <xsd:field xpath="@expert_in_topics"/>
+            <xsd:selector xpath="experts/expert/expert_in_topic/expert_in_topics"/>
+            <xsd:field xpath="."/>
         </xsd:keyref>
 
         <xsd:key name="expertKey">
@@ -57,7 +56,6 @@
     </xsd:complexType>
 
     <xsd:complexType name="expert_in_topics">
-        <!-- todo how to reference correctly-->
         <xsd:sequence>
             <xsd:element name="expert_in_topic" type="xsd:IDREF" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
@@ -70,9 +68,9 @@
             <xsd:element name="address" type="xsd:string"/>
             <xsd:element name="description" type="xsd:anyType"/>
             <xsd:element name="recommendations" type="recommendations" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="expert_in_topics" type="expert_in_topics" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
         <xsd:attribute name="expert_id" type="xsd:ID" use="required"/>
-        <xsd:attribute name="expert_in_topics" type="xsd:IDREFS"/>
     </xsd:complexType>
 
     <xsd:complexType name="recommendation">
