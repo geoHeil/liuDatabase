@@ -1,18 +1,26 @@
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.1">
 
     <xsd:element name="knowledgeDatabase" type="knowledgeDatabase">
-        <xsd:key name="originator">
-            <xsd:selector xpath="experts/expert"/>
-            <xsd:field xpath="@expert_id"/>
-        </xsd:key>
-
-        <xsd:key name="recommender">
-            <xsd:selector xpath="experts/expert"/>
-            <xsd:field xpath="@expert_id"/>
-        </xsd:key>
-
-        <xsd:key name="expert_in_topic">
+        <xsd:keyref name="originator" refer="expertKey">
             <xsd:selector xpath="topics/topic"/>
+            <xsd:field xpath="originator"/>
+        </xsd:keyref>
+        <xsd:keyref name="recommender" refer="expertKey">
+            <xsd:selector xpath="recommendations/recommendation"/>
+            <xsd:field xpath="recommender"/>
+        </xsd:keyref>
+        <xsd:keyref name="expert_in_topicKey" refer="topicKey">
+            <xsd:selector xpath="experts/experts"/>
+            <xsd:field xpath="@expert_in_topics"/>
+        </xsd:keyref>
+
+        <xsd:key name="expertKey">
+            <xsd:selector xpath=".//expert"/>
+            <xsd:field xpath="@expert_id"/>
+        </xsd:key>
+        <xsd:key name="topicKey">
+            <xsd:selector xpath=".//topic"/>
             <xsd:field xpath="@topic_id"/>
         </xsd:key>
     </xsd:element>
