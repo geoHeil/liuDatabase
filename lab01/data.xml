@@ -1,2 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<knowledgeDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="file:/Users/geoHeil/Dropbox/7.Semester/advancedDataModel/lab/lab01/schema.xsd">
+    <experts>
+        <expert expert_id="e1" expert_in_topics="t1 t2">
+            <email>e1@expert.com</email>
+            <name>e1</name>
+            <address>e1address</address>
+            <description>
+                <em>some xml description</em>
+            </description>
+        </expert>
 
+        <expert expert_id="e2">
+            <email>e2@expert.com</email>
+            <name>e2</name>
+            <address>e2address</address>
+            <description>
+                <em>some xml description</em>
+            </description>
+            <recommendations>
+                <recommendation recommender="e1">
+                    <text>some recommendation</text>
+                </recommendation>
+                <recommendation recommender="e3">
+                    <text>some recommendation</text>
+                </recommendation>
+            </recommendations>
+        </expert>
+
+        <expert expert_id="e3">
+            <email>e3@expert.com</email>
+            <name>e3</name>
+            <address>e3address</address>
+            <description>
+                <em>some xml description</em>
+            </description>
+        </expert>
+    </experts>
+
+    <topics>
+        <topic topic_id="t1" originator="e1">
+            <heading>topic 1</heading>
+            <expertise_area>some area 1</expertise_area>
+            <text>text foo the bar</text>
+        </topic>
+
+        <topic topic_id="t2" originator="e1">
+            <heading>topic 1</heading>
+            <expertise_area>some area 1</expertise_area>
+            <text>text foo the bar</text>
+            <subtopics>
+                <topic topic_id="t3" originator="e1">
+                    <heading>sub1</heading>
+                    <expertise_area>sub1</expertise_area>
+                    <text>sub foo</text>
+                    <subtopics>
+                        <topic topic_id="t4" originator="e1">
+                            <heading>dddd</heading>
+                            <expertise_area>ddd</expertise_area>
+                            <text>dddd</text>
+                        </topic>
+                        <topic topic_id="t5" originator="e2">
+                            <heading>dasf</heading>
+                            <expertise_area>asdf</expertise_area>
+                            <text>sadf</text>
+                        </topic>
+                    </subtopics>
+                </topic>
+            </subtopics>
+        </topic>
+    </topics>
+</knowledgeDatabase>
