@@ -266,6 +266,17 @@
   </owl:DatatypeProperty>
   <ResearchGroup rdf:ID="SAS"/>
   <ResearchGroup rdf:ID="AIICS"/>
+  <UndergraduateStudent rdf:ID="HarryPotter">
+    <age rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</age>
+    <emailAddress rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >harry@liu.se</emailAddress>
+    <takesCourse>
+      <Course rdf:ID="superMagic1"/>
+    </takesCourse>
+    <takesCourse>
+      <Course rdf:ID="superMagic2"/>
+    </takesCourse>
+  </UndergraduateStudent>
   <ResearchGroup rdf:ID="HCS"/>
   <ResearchGroup rdf:ID="ADIT">
     <subOrganizationOf>

@@ -1,4 +1,4 @@
-; Tue Sep 29 16:08:57 CEST 2015
+; Tue Sep 29 16:13:08 CEST 2015
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[university_ProjectKB_Class75]
-		[university_ProjectKB_Class76]
-		[university_ProjectKB_Class77]
-		[university_ProjectKB_Class78]
-		[university_ProjectKB_Class79]))
+		[university_ProjectKB_Class207]
+		[university_ProjectKB_Class208]
+		[university_ProjectKB_Class209]
+		[university_ProjectKB_Class210]
+		[university_ProjectKB_Class211]))
 
 ([CLSES_TAB] of  Widget
 
@@ -3598,6 +3598,7 @@
 	(is_hidden FALSE)
 	(label "Name")
 	(name ":NAME")
+	(property_list [university_ProjectKB_Class83])
 	(widget_class_name "edu.stanford.smi.protege.widget.FormWidget")
 	(width 266)
 	(x 0)
@@ -8245,8 +8246,33 @@
 	(property_list [university_ProjectKB_Class21])
 	(widget_class_name "edu.stanford.smi.RemoteKBTab.WordNetTab"))
 
+([university_ProjectKB_Class207] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([university_ProjectKB_Class208] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Class")
+	(string_value "%3ANAME"))
+
+([university_ProjectKB_Class209] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
+
 ([university_ProjectKB_Class21] of  Property_List
 )
+
+([university_ProjectKB_Class210] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([university_ProjectKB_Class211] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Thing")
+	(string_value "%3ANAME"))
 
 ([university_ProjectKB_Class22] of  Widget
 
@@ -8501,36 +8527,14 @@
 ([university_ProjectKB_Class74] of  Property_List
 )
 
-([university_ProjectKB_Class75] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([university_ProjectKB_Class76] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Class")
-	(string_value "%3ANAME"))
-
-([university_ProjectKB_Class77] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
-
-([university_ProjectKB_Class78] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([university_ProjectKB_Class79] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Thing")
-	(string_value "%3ANAME"))
-
 ([university_ProjectKB_Class8] of  Widget
 
 	(is_hidden TRUE)
 	(property_list [university_ProjectKB_Class9])
 	(widget_class_name "uk.ac.man.cs.mig.coode.debugger.test.DebuggerTestTab"))
+
+([university_ProjectKB_Class83] of  Property_List
+)
 
 ([university_ProjectKB_Class9] of  Property_List
 )
@@ -10147,8 +10151,7 @@
 		[KB_635552_Instance_28]
 		[KB_635552_Instance_30]
 		[KB_635552_Instance_32]
-		[KB_635552_Instance_34]
-		[university_ProjectKB_Instance_10118]))
+		[KB_635552_Instance_34]))
 
 ([XY_Instance_789] of  Widget
 
