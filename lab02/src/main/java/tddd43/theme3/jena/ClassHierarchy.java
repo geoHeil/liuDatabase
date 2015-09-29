@@ -93,7 +93,7 @@ public class ClassHierarchy {
      * <p>Present instances of a class
      *
      * @param out A print stream to write to
-     * @param c   The class to render *
+     * @param cls   The class to render *
      */
     protected void showInstance(PrintStream out, OntClass cls, int depth) {
         // TODO: !!! Implement the method to present instances of a class
