@@ -2,6 +2,8 @@ package tddd43.theme3.jena;
 
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
+import org.apache.jena.ontology.OntResource;
+import org.apache.jena.util.iterator.ExtendedIterator;
 import org.apache.jena.util.iterator.Filter;
 
 import java.io.PrintStream;
@@ -81,10 +83,10 @@ public class ClassHierarchy {
 
         // TODO: !!! Complete this method to print out the class name in the hierarchy
         if (!c.isRestriction() && !c.isAnon()) {
-            out.println("classname?");
+            out.println(c.getLocalName());
 
             // list the instances for this class
-            //showInstance(out, c, depth + 2);
+            showInstance(out, c, depth + 2);
         }
     }
 
@@ -93,11 +95,13 @@ public class ClassHierarchy {
      * <p>Present instances of a class
      *
      * @param out A print stream to write to
-     * @param cls   The class to render *
+     * @param cls The class to render *
      */
     protected void showInstance(PrintStream out, OntClass cls, int depth) {
-        // TODO: !!! Implement the method to present instances of a class
-        out.println("instances?");
+        for (final ExtendedIterator<? extends OntResource> classes = cls.listInstances(); classes.hasNext(); ) {
+            indent(out, 2);
+            out.print(classes.next().getLocalName());
+        }
     }
 
 
