@@ -19,9 +19,7 @@ public class Main {
                 ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM, null);
 
         try {
-            // TODO: change the path to the place where your own ontology
-            // file is, e.g. "file:///z:/uni.owl"
-            m.read("file:///????.owl");
+            m.read("src/main/resources/uni/university.owl");
         } catch (org.apache.jena.shared.WrappedIOException e) {
             if (e.getCause() instanceof java.io.FileNotFoundException) {
                 System.err.println("A java.io.FileNotFoundException caught: "
