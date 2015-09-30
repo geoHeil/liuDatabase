@@ -51,11 +51,11 @@ VALUES ('e6@expert.com', 'e6name', 'e6address', '<em>some xml description</em>')
 INSERT INTO expert (email, name, address, description)
 VALUES ('e7@expert.com', 'e7name', 'e7address', '<em>some xml description</em>');
 
-INSERT INTO topic (expertise_area, originator, heading, text) VALUES ('area1', 1, 'heading1', 'text1');
-INSERT INTO topic (expertise_area, originator, heading, text) VALUES ('area2', 2, 'heading2', 'text2');
-INSERT INTO topic (expertise_area, originator, heading, text) VALUES ('area1', 1, 'heading3', 'text3');
-INSERT INTO topic (expertise_area, originator, heading, text) VALUES ('area1', 1, 'heading4', 'text4');
-INSERT INTO topic (expertise_area, originator, heading, text) VALUES ('area1', 1, 'heading5', 'text5');
+INSERT INTO topic (topic, originator, heading, text) VALUES ('area1', 1, 'heading1', 'text1');
+INSERT INTO topic (topic, originator, heading, text) VALUES ('area2', 2, 'heading2', 'text2');
+INSERT INTO topic (topic, originator, heading, text) VALUES ('area1', 1, 'heading3', 'text3');
+INSERT INTO topic (topic, originator, heading, text) VALUES ('area1', 1, 'heading4', 'text4');
+INSERT INTO topic (topic, originator, heading, text) VALUES ('area1', 1, 'heading5', 'text5');
 
 INSERT INTO expert_topic (expert_id, topic_id) VALUES (1, 1);
 INSERT INTO expert_topic (expert_id, topic_id) VALUES (1, 2);
