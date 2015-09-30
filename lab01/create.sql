@@ -1,9 +1,10 @@
 CREATE TABLE expert (
-  expert_id   INTEGER PRIMARY KEY DEFAULT AUTO_INCREMENT,
+  expert_id   INTEGER AUTO_INCREMENT,
   email       VARCHAR(200),
   name        VARCHAR(200),
   address     VARCHAR(500),
-  description VARCHAR(1000)
+  description VARCHAR(1000),
+  PRIMARY KEY expert_id
 );
 
 CREATE TABLE topic (
