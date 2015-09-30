@@ -1,9 +1,5 @@
-CREATE SEQUENCE seq_expert;
-CREATE SEQUENCE seq_recommendation;
-CREATE SEQUENCE seq_topic;
-
 CREATE TABLE expert (
-  expert_id   INTEGER PRIMARY KEY DEFAULT nextval('seq_expert'),
+  expert_id   INTEGER PRIMARY KEY DEFAULT AUTO_INCREMENT,
   email       VARCHAR(200),
   name        VARCHAR(200),
   address     VARCHAR(500),
@@ -11,7 +7,7 @@ CREATE TABLE expert (
 );
 
 CREATE TABLE topic (
-  topic_id       INTEGER PRIMARY KEY DEFAULT nextval('seq_topic'),
+  topic_id       INTEGER PRIMARY KEY DEFAULT AUTO_INCREMENT,
   originator     INTEGER REFERENCES expert (expert_id),
   heading        VARCHAR(100),
   text           VARCHAR(1000)
@@ -31,7 +27,7 @@ CREATE TABLE subtopic (
 -- assumption each expert writes a own recommendation
 -- Every recommendation pertains to one topic area (not several).
 CREATE TABLE recommendation (
-  recommendation_id INTEGER PRIMARY KEY DEFAULT nextval('seq_recommendation'),
+  recommendation_id INTEGER PRIMARY KEY DEFAULT  AUTO_INCREMENT,
   text              VARCHAR(1000),
   topic             INTEGER REFERENCES topic (topic_id),
   recomendededBy    INTEGER REFERENCES expert (expert_id),
