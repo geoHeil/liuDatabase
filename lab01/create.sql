@@ -15,11 +15,12 @@ CREATE TABLE expert (
 );
 
 CREATE TABLE topic (
-  topic_id       INTEGER PRIMARY KEY DEFAULT AUTO_INCREMENT,
+  topic_id       INTEGER AUTO_INCREMENT,
   originator     INTEGER,
   heading        VARCHAR(100),
   desription     VARCHAR(1000),
-  FOREIGN KEY (originator) REFERENCES expert (expert_id)
+  PRIMARY KEY (topic_id)
+  FOREIGN KEY (originator) REFERENCES expert (expert_id),
 );
 
 
@@ -41,7 +42,7 @@ CREATE TABLE subtopic (
 -- Every recommendation pertains to one topic area (not several).
 CREATE TABLE recommendation (
   description       VARCHAR(1000),
-  recomendededBy    INTEGER,
+  recommendedBy     INTEGER,
   isRecommended     INTEGER,
   topic             INTEGER,
   FOREIGN KEY (topic) REFERENCES topic (topic_id),
