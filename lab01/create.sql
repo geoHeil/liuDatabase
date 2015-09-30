@@ -12,7 +12,6 @@ CREATE TABLE expert (
 
 CREATE TABLE topic (
   topic_id       INTEGER PRIMARY KEY DEFAULT nextval('seq_topic'),
-  expertise_area VARCHAR(500),
   originator     INTEGER REFERENCES expert (expert_id),
   heading        VARCHAR(100),
   text           VARCHAR(1000)
