@@ -99,7 +99,7 @@ public class ClassHierarchy {
      */
     protected void showInstance(PrintStream out, OntClass cls, int depth) {
         for (final ExtendedIterator<? extends OntResource> classes = cls.listInstances(); classes.hasNext(); ) {
-            indent(out, 2);
+            indent(out, depth);
             out.print(classes.next().getLocalName());
         }
     }
