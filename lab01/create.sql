@@ -26,21 +26,21 @@ CREATE TABLE expert_topic (
 CREATE TABLE subtopic (
   superTopic INTEGER,
   subTopic   INTEGER,
-  FOREIGN KEY  REFERENCES topic (topic_id),
-  FOREIGN KEY  REFERENCES topic (topic_id)
+  FOREIGN KEY superTopic REFERENCES topic (topic_id),
+  FOREIGN KEY subTopic REFERENCES topic (topic_id)
 );
 
 -- assumption each expert writes a own recommendation
 -- Every recommendation pertains to one topic area (not several).
 CREATE TABLE recommendation (
-  recommendation_id INTEGER PRIMARY KEY DEFAULT  AUTO_INCREMENT,
-  text              VARCHAR(1000),
-  topic             INTEGER,
+  description       VARCHAR(1000),
   recomendededBy    INTEGER,
-  isRrecomendeded   INTEGER,
-  FOREIGN KEY  REFERENCES topic (topic_id),
-  FOREIGN KEY  REFERENCES expert (expert_id),
-  FOREIGN KEY  REFERENCES expert (expert_id)
+  isRecommended     INTEGER,
+  topic             INTEGER,
+  FOREIGN KEY topic REFERENCES topic (topic_id),
+  FOREIGN KEY recommendedBy REFERENCES expert (expert_id),
+  FOREIGN KEY isRecommended REFERENCES expert (expert_id),
+  PRIMARY KEY (recommendedBy, isRecommended, topic)
 );
 
 
