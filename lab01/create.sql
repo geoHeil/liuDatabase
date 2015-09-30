@@ -30,9 +30,11 @@ CREATE TABLE subtopic (
 );
 
 -- assumption each expert writes a own recommendation
+-- Every recommendation pertains to one topic area (not several).
 CREATE TABLE recommendation (
   recommendation_id INTEGER PRIMARY KEY DEFAULT nextval('seq_recommendation'),
   text              VARCHAR(1000),
+  topic             INTEGER REFERENCES topic (topic_id),
   recomendededBy    INTEGER REFERENCES expert (expert_id),
   isRrecomendeded   INTEGER REFERENCES expert (expert_id)
 );
