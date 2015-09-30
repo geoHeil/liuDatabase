@@ -10,7 +10,7 @@ CREATE TABLE topic (
   topic_id       INTEGER PRIMARY KEY DEFAULT AUTO_INCREMENT,
   originator     INTEGER,
   heading        VARCHAR(100),
-  text           VARCHAR(1000),
+  desription     VARCHAR(1000),
   FOREIGN KEY originator REFERENCES expert (expert_id)
 );
 
@@ -77,10 +77,10 @@ INSERT INTO subtopic (superTopic, subTopic) VALUES (1, 3);
 INSERT INTO subtopic (superTopic, subTopic) VALUES (1, 4);
 INSERT INTO subtopic (superTopic, subTopic) VALUES (4, 5);
 
-INSERT INTO recommendation (text, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 1, 3);
-INSERT INTO recommendation (text, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 1, 2);
-INSERT INTO recommendation (text, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 2, 3);
-INSERT INTO recommendation (text, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 3, 4);
-INSERT INTO recommendation (text, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 2, 5);
-INSERT INTO recommendation (text, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 3, 6);
-INSERT INTO recommendation (text, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 5, 7);
+INSERT INTO recommendation (description, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 1, 3);
+INSERT INTO recommendation (description, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 1, 2);
+INSERT INTO recommendation (description, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 2, 3);
+INSERT INTO recommendation (description, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 3, 4);
+INSERT INTO recommendation (description, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 2, 5);
+INSERT INTO recommendation (description, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 3, 6);
+INSERT INTO recommendation (description, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 5, 7);
