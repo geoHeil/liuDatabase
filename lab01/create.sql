@@ -1,3 +1,10 @@
+DROP TABLE IF EXISTS recommendation;
+DROP TABLE IF EXISTS subtopic;
+DROP TABLE IF EXISTS expert_topic;
+DROP TABLE IF EXISTS topic;
+DROP TABLE IF EXISTS expert;
+
+
 CREATE TABLE expert (
   expert_id   INTEGER AUTO_INCREMENT,
   email       VARCHAR(200),
