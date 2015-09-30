@@ -4,7 +4,7 @@ CREATE TABLE expert (
   name        VARCHAR(200),
   address     VARCHAR(500),
   description VARCHAR(1000),
-  PRIMARY KEY expert_id
+  PRIMARY KEY (expert_id)
 );
 
 CREATE TABLE topic (
@@ -12,22 +12,22 @@ CREATE TABLE topic (
   originator     INTEGER,
   heading        VARCHAR(100),
   desription     VARCHAR(1000),
-  FOREIGN KEY originator REFERENCES expert (expert_id)
+  FOREIGN KEY (originator) REFERENCES expert (expert_id)
 );
 
 
 CREATE TABLE expert_topic (
   expert_id INTEGER,
   topic_id  INTEGER,
-  FOREIGN KEY expert_id REFERENCES expert (expert_id),
-  FOREIGN KEY topic_id  REFERENCES topic (topic_id)
+  FOREIGN KEY (expert_id) REFERENCES expert (expert_id),
+  FOREIGN KEY (topic_id)  REFERENCES topic (topic_id)
 );
 
 CREATE TABLE subtopic (
   superTopic INTEGER,
   subTopic   INTEGER,
-  FOREIGN KEY superTopic REFERENCES topic (topic_id),
-  FOREIGN KEY subTopic REFERENCES topic (topic_id)
+  FOREIGN KEY (superTopic) REFERENCES topic (topic_id),
+  FOREIGN KEY (subTopic) REFERENCES topic (topic_id)
 );
 
 -- assumption each expert writes a own recommendation
@@ -37,9 +37,9 @@ CREATE TABLE recommendation (
   recomendededBy    INTEGER,
   isRecommended     INTEGER,
   topic             INTEGER,
-  FOREIGN KEY topic REFERENCES topic (topic_id),
-  FOREIGN KEY recommendedBy REFERENCES expert (expert_id),
-  FOREIGN KEY isRecommended REFERENCES expert (expert_id),
+  FOREIGN KEY (topic) REFERENCES topic (topic_id),
+  FOREIGN KEY (recommendedBy) REFERENCES expert (expert_id),
+  FOREIGN KEY (isRecommended) REFERENCES expert (expert_id),
   PRIMARY KEY (recommendedBy, isRecommended, topic)
 );
 
