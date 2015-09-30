@@ -8,20 +8,25 @@ CREATE TABLE expert (
 
 CREATE TABLE topic (
   topic_id       INTEGER PRIMARY KEY DEFAULT AUTO_INCREMENT,
-  originator     INTEGER REFERENCES expert (expert_id),
+  originator     INTEGER,
   heading        VARCHAR(100),
-  text           VARCHAR(1000)
+  text           VARCHAR(1000),
+  FOREIGN KEY originator REFERENCES expert (expert_id)
 );
 
 
 CREATE TABLE expert_topic (
-  expert_id INTEGER REFERENCES expert (expert_id),
-  topic_id  INTEGER REFERENCES topic (topic_id)
+  expert_id INTEGER,
+  topic_id  INTEGER,
+  FOREIGN KEY expert_id REFERENCES expert (expert_id),
+  FOREIGN KEY topic_id  REFERENCES topic (topic_id)
 );
 
 CREATE TABLE subtopic (
-  superTopic INTEGER REFERENCES topic (topic_id),
-  subTopic   INTEGER REFERENCES topic (topic_id)
+  superTopic INTEGER,
+  subTopic   INTEGER,
+  FOREIGN KEY  REFERENCES topic (topic_id),
+  FOREIGN KEY  REFERENCES topic (topic_id)
 );
 
 -- assumption each expert writes a own recommendation
@@ -29,9 +34,12 @@ CREATE TABLE subtopic (
 CREATE TABLE recommendation (
   recommendation_id INTEGER PRIMARY KEY DEFAULT  AUTO_INCREMENT,
   text              VARCHAR(1000),
-  topic             INTEGER REFERENCES topic (topic_id),
-  recomendededBy    INTEGER REFERENCES expert (expert_id),
-  isRrecomendeded   INTEGER REFERENCES expert (expert_id)
+  topic             INTEGER,
+  recomendededBy    INTEGER,
+  isRrecomendeded   INTEGER,
+  FOREIGN KEY  REFERENCES topic (topic_id),
+  FOREIGN KEY  REFERENCES expert (expert_id),
+  FOREIGN KEY  REFERENCES expert (expert_id)
 );
 
 
