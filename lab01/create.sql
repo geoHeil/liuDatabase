@@ -19,7 +19,7 @@ CREATE TABLE topic (
   originator     INTEGER,
   heading        VARCHAR(100),
   desription     VARCHAR(1000),
-  PRIMARY KEY (topic_id)
+  PRIMARY KEY (topic_id),
   FOREIGN KEY (originator) REFERENCES expert (expert_id),
 );
 
