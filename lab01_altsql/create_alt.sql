@@ -17,13 +17,6 @@ CREATE TABLE expert (
   PRIMARY KEY (expert_id)
 ) ENGINE=InnoDB;
 
-CREATE TABLE area (
-  id          INT NOT NULL AUTO_INCREMENT,
-  name        VARCHAR(80),
-  description VARCHAR(255),
-  PRIMARY KEY (id)  
-) ENGINE=InnoDB;
-
 CREATE TABLE topic (
   id          INT NOT NULL AUTO_INCREMENT,
   name        VARCHAR(80),
@@ -51,19 +44,6 @@ CREATE TABLE subtopic (
 ) ENGINE=InnoDB;
 
 
-CREATE TABLE subarea (
-  parent      INT NOT NULL,
-  child       INT NOT NULL,
-  PRIMARY KEY (parent, child),
-  FOREIGN KEY (parent) 
-    REFERENCES area(id) 
-    ON DELETE CASCADE,
-  FOREIGN KEY (child) 
-    REFERENCES area(id)     
-    ON DELETE CASCADE  
-) ENGINE=InnoDB;
-
-
 CREATE TABLE expertise (
   id          INT NULL AUTO_INCREMENT,
   name        VARCHAR(255),
@@ -72,31 +52,19 @@ CREATE TABLE expertise (
 ) ENGINE=InnoDB;
 
 
-CREATE TABLE topicarea (
-  topic       INT NOT NULL,
-  area        INT NOT NULL,
-  PRIMARY KEY (topic, area),
-  FOREIGN KEY (topic) 
-    REFERENCES topic(id) 
-    ON DELETE CASCADE,
-  FOREIGN KEY (area) 
-    REFERENCES area(id) 
-    ON DELETE CASCADE    
-) ENGINE=InnoDB;
-
 CREATE TABLE recommendation (
   recommender INT,
   recommendee INT NOT NULL,
-  rec_area    INT NOT NULL,
+  topic       INT NOT NULL,
   description VARCHAR(255),
-  PRIMARY KEY (recommender, recommendee, rec_area),
+  PRIMARY KEY (recommender, recommendee, topic),
   FOREIGN KEY (recommender)
     REFERENCES expert(expert_id) 
     ON DELETE CASCADE,  
   FOREIGN KEY (recommendee)
     REFERENCES expert(expert_id) 
     ON DELETE CASCADE,
-  FOREIGN KEY (rec_area)
-    REFERENCES area(id) 
+  FOREIGN KEY (topic)
+    REFERENCES topic(id) 
     ON DELETE CASCADE 
 ) ENGINE=InnoDB;  
