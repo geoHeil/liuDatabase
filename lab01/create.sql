@@ -55,11 +55,11 @@ VALUES ('e6@expert.com', 'e6name', 'e6address', '<em>some xml description</em>')
 INSERT INTO expert (email, name, address, description)
 VALUES ('e7@expert.com', 'e7name', 'e7address', '<em>some xml description</em>');
 
-INSERT INTO topic (expertise_area, originator, heading, text) VALUES ('area1', 1, 'heading1', 'text1');
-INSERT INTO topic (expertise_area, originator, heading, text) VALUES ('area2', 2, 'heading2', 'text2');
-INSERT INTO topic (expertise_area, originator, heading, text) VALUES ('area1', 1, 'heading3', 'text3');
-INSERT INTO topic (expertise_area, originator, heading, text) VALUES ('area1', 1, 'heading4', 'text4');
-INSERT INTO topic (expertise_area, originator, heading, text) VALUES ('area1', 1, 'heading5', 'text5');
+INSERT INTO topic (originator, heading, text) VALUES (1, 'heading1', 'text1');
+INSERT INTO topic (originator, heading, text) VALUES (2, 'heading2', 'text2');
+INSERT INTO topic (originator, heading, text) VALUES (1, 'heading3', 'text3');
+INSERT INTO topic (originator, heading, text) VALUES (1, 'heading4', 'text4');
+INSERT INTO topic (originator, heading, text) VALUES (1, 'heading5', 'text5');
 
 INSERT INTO expert_topic (expert_id, topic_id) VALUES (1, 1);
 INSERT INTO expert_topic (expert_id, topic_id) VALUES (1, 2);
@@ -73,10 +73,10 @@ INSERT INTO subtopic (superTopic, subTopic) VALUES (1, 3);
 INSERT INTO subtopic (superTopic, subTopic) VALUES (1, 4);
 INSERT INTO subtopic (superTopic, subTopic) VALUES (4, 5);
 
-INSERT INTO recommendation (text, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 1, 3);
-INSERT INTO recommendation (text, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 1, 2);
-INSERT INTO recommendation (text, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 2, 3);
-INSERT INTO recommendation (text, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 3, 4);
-INSERT INTO recommendation (text, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 2, 5);
-INSERT INTO recommendation (text, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 3, 6);
-INSERT INTO recommendation (text, recomendededBy, isRrecomendeded) VALUES ('recommendation awesome foo', 5, 7);
+INSERT INTO recommendation (text, recomendededBy, isRrecomendeded, topic) VALUES ('recommendation awesome foo', 1, 3, 1);
+INSERT INTO recommendation (text, recomendededBy, isRrecomendeded, topic) VALUES ('recommendation awesome foo', 1, 2, 1);
+INSERT INTO recommendation (text, recomendededBy, isRrecomendeded, topic) VALUES ('recommendation awesome foo', 2, 3, 2);
+INSERT INTO recommendation (text, recomendededBy, isRrecomendeded, topic) VALUES ('recommendation awesome foo', 3, 4, 2);
+INSERT INTO recommendation (text, recomendededBy, isRrecomendeded, topic) VALUES ('recommendation awesome foo', 2, 5, 2);
+INSERT INTO recommendation (text, recomendededBy, isRrecomendeded, topic) VALUES ('recommendation awesome foo', 3, 6, 2);
+INSERT INTO recommendation (text, recomendededBy, isRrecomendeded, topic) VALUES ('recommendation awesome foo', 5, 7, 1);
