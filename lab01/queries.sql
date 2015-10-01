@@ -7,7 +7,7 @@ SELECT
 FROM expert e
   JOIN expert_topic et ON e.expert_id = et.expert_id
   JOIN topic t ON e.expert_id = t.originator
-WHERE t.expertise_area = 'area2';
+WHERE t.topic_id = 1;
 
 -- Query B
 WITH subTopicIds AS (
@@ -19,7 +19,7 @@ WITH subTopicIds AS (
     --   specify topic Y here
     WHERE t.topic_id = 1
 )
-SELECT t.expertise_area
+SELECT t.topic_id
 FROM topic t
   JOIN subTopicIds ON t.topic_id = subTopicIds.subtopic;
 
@@ -32,7 +32,7 @@ WITH expertAreaY AS (
       JOIN expert_topic et ON e.expert_id = et.expert_id
       JOIN topic t ON e.expert_id = t.originator
     --       specify area Y here
-    WHERE t.expertise_area = 'area2'
+    WHERE t.topic_id = 2
 )
 
 SELECT DISTINCT
@@ -59,7 +59,7 @@ FROM expertRecommendedByX eX
   JOIN expert_topic et ON r.isrrecomendeded = et.expert_id
   JOIN topic t ON t.topic_id = et.topic_id
 --       specify area Y here
-WHERE t.expertise_area = 'area1';
+WHERE t.topic_id = 1;
 
 -- Query E
 
@@ -89,9 +89,10 @@ WITH RECURSIVE expertsLinks (expert_id) AS (
   WHERE r.recomendededby = 1
 
   UNION ALL
-    SELECT e.expert_id
-    FROM recommendation r
-      JOIN expert e ON e.expert_id = r.isrrecomendeded
+  SELECT e.expert_id
+  FROM recommendation r
+    --         this is NOT recursive -- but does work as well
+    JOIN expert e ON e.expert_id = r.isrrecomendeded
 )
 SELECT expert_id
 FROM expertsLinks;
