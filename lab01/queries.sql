@@ -65,21 +65,6 @@ WHERE t.topic_id = 1;
 
 -- TODO integrate area
 -- TODO check is recursive NEEDED
--- SELECT e.expert_id
--- FROM recommendation r
---   JOIN expert e ON e.expert_id = r.isrrecomendeded
--- WHERE r.recomendededby = 2;
-
--- WITH expertAreaY AS (
---     SELECT
---       e.expert_id,
---       e.name
---     FROM expert e
---       JOIN expert_topic et ON e.expert_id = et.expert_id
---       JOIN topic t ON e.expert_id = t.originator
---     --       specify area Y here
---     WHERE t.expertise_area = 'area2'
--- )
 
 WITH RECURSIVE expertsLinks (expert_id) AS (
   SELECT e.expert_id
@@ -92,7 +77,12 @@ WITH RECURSIVE expertsLinks (expert_id) AS (
   SELECT e.expert_id
   FROM recommendation r
     --         this is NOT recursive -- but does work as well
+    --         TODO check if that is correct
     JOIN expert e ON e.expert_id = r.isrrecomendeded
 )
-SELECT expert_id
-FROM expertsLinks;
+SELECT DISTINCT el.expert_id
+FROM expertsLinks el
+  JOIN expert_topic et ON el.expert_id = et.expert_id
+  JOIN topic t ON el.expert_id = t.originator
+--       specify area Y here
+WHERE t.topic_id = 2
