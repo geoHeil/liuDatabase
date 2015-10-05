@@ -88,7 +88,6 @@
     <xsd:complexType name="topic">
         <xsd:sequence>
             <xsd:element name="heading" type="xsd:string"/>
-            <xsd:element name="expertise_area" type="xsd:string"/>
             <xsd:element name="text" type="xsd:string"/>
         </xsd:sequence>
         <xsd:attribute name="topic_id" type="xsd:ID" use="required"/>
