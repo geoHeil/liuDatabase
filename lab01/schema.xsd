@@ -14,6 +14,15 @@
             <xsd:field xpath="."/>
         </xsd:keyref>
 
+        <xsd:keyref name="superTopic" refer="topicKey">
+            <xsd:selector xpath="topics/topic"/>
+            <xsd:field xpath="@superTopic"/>
+        </xsd:keyref>
+        <xsd:keyref name="subrTopic" refer="topicKey">
+            <xsd:selector xpath="topics/topic"/>
+            <xsd:field xpath="@subTopic"/>
+        </xsd:keyref>
+
         <xsd:key name="expertKey">
             <xsd:selector xpath=".//expert"/>
             <xsd:field xpath="@expert_id"/>
@@ -49,12 +58,6 @@
         </xsd:sequence>
     </xsd:complexType>
 
-    <xsd:complexType name="subtopics">
-        <xsd:sequence>
-            <xsd:element name="topic" type="topic" minOccurs="0" maxOccurs="unbounded"/>
-        </xsd:sequence>
-    </xsd:complexType>
-
     <xsd:complexType name="expert_in_topics">
         <xsd:sequence>
             <xsd:element name="expert_in_topic" type="xsd:IDREF" minOccurs="0" maxOccurs="unbounded"/>
@@ -87,9 +90,10 @@
             <xsd:element name="heading" type="xsd:string"/>
             <xsd:element name="expertise_area" type="xsd:string"/>
             <xsd:element name="text" type="xsd:string"/>
-            <xsd:element name="subtopics" type="subtopics" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
         <xsd:attribute name="topic_id" type="xsd:ID" use="required"/>
         <xsd:attribute name="originator" type="xsd:IDREF" use="required"/>
+        <xsd:attribute name="superTopic" type="xsd:IDREF" use="optional"/>
+        <xsd:attribute name="subTopic" type="xsd:IDREF" use="optional"/>
     </xsd:complexType>
 </xsd:schema>

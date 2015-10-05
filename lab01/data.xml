@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <knowledgeDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="schema.xsd">
+                   xsi:noNamespaceSchemaLocation="schema.xsd">
     <experts>
         <expert expert_id="e1">
             <email>e1@expert.com</email>
@@ -43,35 +43,28 @@
     </experts>
 
     <topics>
-        <topic topic_id="t1" originator="e1">
+        <topic topic_id="t1" originator="e1" subTopic="t2">
             <heading>topic 1</heading>
             <expertise_area>some area 1</expertise_area>
             <text>text foo the bar</text>
         </topic>
 
-        <topic topic_id="t2" originator="e1">
+        <topic topic_id="t2" originator="e1" superTopic="t1" subTopic="t3">
             <heading>topic 1</heading>
             <expertise_area>some area 1</expertise_area>
             <text>text foo the bar</text>
-            <subtopics>
-                <topic topic_id="t3" originator="e1">
-                    <heading>sub1</heading>
-                    <expertise_area>sub1</expertise_area>
-                    <text>sub foo</text>
-                    <subtopics>
-                        <topic topic_id="t4" originator="e1">
-                            <heading>dddd</heading>
-                            <expertise_area>ddd</expertise_area>
-                            <text>dddd</text>
-                        </topic>
-                        <topic topic_id="t5" originator="e2">
-                            <heading>dasf</heading>
-                            <expertise_area>asdf</expertise_area>
-                            <text>sadf</text>
-                        </topic>
-                    </subtopics>
-                </topic>
-            </subtopics>
+        </topic>
+
+        <topic topic_id="t3" originator="e1" superTopic="t2" subTopic="t4">
+            <heading>topic 1</heading>
+            <expertise_area>some area 1</expertise_area>
+            <text>text foo the bar</text>
+        </topic>
+
+        <topic topic_id="t4" originator="e1" superTopic="t3">
+            <heading>topic 1</heading>
+            <expertise_area>some area 1</expertise_area>
+            <text>text foo the bar</text>
         </topic>
     </topics>
 </knowledgeDatabase>

@@ -63,7 +63,6 @@ WHERE t.topic_id = 1;
 
 -- Query E
 
--- TODO integrate area
 -- TODO check is recursive NEEDED
 
 WITH RECURSIVE expertsLinks (expert_id) AS (
