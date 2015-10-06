@@ -43,6 +43,32 @@
                 <em>some xml description</em>
             </description>
         </expert>
+        
+        <expert expert_id="e4">
+            <email>e4@expert.com</email>
+            <name>e4</name>
+            <address>e4addr</address>
+            <description>e4Foo</description>
+            <recommendations>
+                <recommendation recommender="e2">
+                    <text>awesome</text>
+                </recommendation>
+            </recommendations>
+            <expert_in_topics>
+                <expert_in_topic>t1</expert_in_topic>
+            </expert_in_topics>
+        </expert>
+        <expert expert_id="e5">
+            <email>asdf</email>
+            <name>asdf</name>
+            <address>asdf</address>
+            <description>asdf</description>
+            <recommendations>
+                <recommendation recommender="e2">
+                    <text>asdf</text>
+                </recommendation>
+            </recommendations>
+        </expert>
     </experts>
 
     <topics>
